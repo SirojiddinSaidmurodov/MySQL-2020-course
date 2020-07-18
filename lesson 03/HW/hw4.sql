@@ -1,5 +1,6 @@
 /*(по желанию) Из таблицы users необходимо извлечь пользователей, 
  родившихся в августе и мае. Месяцы заданы в виде списка 
  английских названий ('may', 'august')*/
-SELECT * FROM users 
+SELECT *
+FROM users
 WHERE birthday_at IN ('may', 'august');
