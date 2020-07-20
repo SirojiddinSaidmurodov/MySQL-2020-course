@@ -12,7 +12,7 @@ values (0),
     (0),
     (30),
     (500),
-(1);
+    (1);
 SELECT *
 FROM storehouses_products
 ORDER BY IF(value = 0, pow(2, 32), value);
