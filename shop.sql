@@ -79,3 +79,7 @@ CREATE TABLE storehouse_products(
 	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON
 UPDATE CURRENT_TIMESTAMP
 ) COMMENT = 'Запас на складе';
+/* Внешние и первичные ключи */
+ALTER TABLE products CHANGE catalog_id catalog_id BIGINT UNSIGNED DEFAULT NULL;
+ALTER TABLE products
+ADD FOREIGN KEY (catalog_id) REFERENCES catalogs (id) ON DELETE NO ACTION ON UPDATE NO ACTION;
