@@ -1,3 +1,5 @@
+/* Составьте список пользователей users, которые осуществили
+ хотя бы один заказ orders в интернет магазине. */
 DELETE FROM orders;
 INSERT INTO orders (user_id)
 VALUES (2),
