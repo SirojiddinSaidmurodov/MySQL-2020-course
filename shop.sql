@@ -197,3 +197,7 @@ VALUES (
 		NULL,
 		NULL
 	);
+	INSERT INTO orders (user_id)
+VALUES (2),
+    (5),
+    (3);
