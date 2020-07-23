@@ -3,4 +3,4 @@ SELECT products.name product,
     catalogs.name 'catalog'
 from products
     JOIN catalogs
-where catalog_id = catalogs.id;
+on catalog_id = catalogs.id;
