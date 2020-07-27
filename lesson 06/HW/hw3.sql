@@ -13,11 +13,18 @@ VALUES ('2018-08-01'),
     ('2018-08-16'),
     ('2018-08-17');
 SET @i := -1;
-SELECT date('2018-08-01') + INTERVAL @i := @i + 1 DAY AS augustDay
+SELECT augustDay,
+    augustDay IN (
+        SELECT *
+        FROM hw3example
+    ) AS d
 FROM (
-        SELECT p1.id p1id,
-            p2.id p2id
-        FROM products p1,
-            products p2
-    ) AS pr
-WHERE @i < 30;
+        SELECT date('2018-08-01') + INTERVAL @i := @i + 1 DAY AS augustDay
+        FROM (
+                SELECT p1.id p1id,
+                    p2.id p2id
+                FROM products p1,
+                    products p2
+            ) AS pr
+        WHERE @i < 30
+    ) AS a;
