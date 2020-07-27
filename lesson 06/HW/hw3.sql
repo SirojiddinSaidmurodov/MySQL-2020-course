@@ -13,13 +13,13 @@ VALUES ('2018-08-01'),
     ('2018-08-16'),
     ('2018-08-17');
 SET @i := -1;
-SELECT augustDay,
-    augustDay IN (
+SELECT created_at,
+    created_at IN (
         SELECT *
         FROM hw3example
     ) AS d
 FROM (
-        SELECT date('2018-08-01') + INTERVAL @i := @i + 1 DAY AS augustDay
+        SELECT date('2018-08-01') + INTERVAL @i := @i + 1 DAY AS created_at
         FROM (
                 SELECT p1.id p1id,
                     p2.id p2id
