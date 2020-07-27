@@ -6,15 +6,19 @@ DROP DATABASE IF EXISTS sample;
 CREATE DATABASE sample;
 -- и табличку в ней...
 CREATE TABLE sample.users(
-	id SERIAL PRIMARY KEY,
-	name varchar(255) comment 'Имя покупателя',
-	birthday_at DATE comment 'Деь рождения',
-	created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON
+    id SERIAL PRIMARY KEY,
+    name varchar(255) comment 'Имя покупателя',
+    birthday_at DATE comment 'Деь рождения',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON
 UPDATE CURRENT_TIMESTAMP
 );
 -- Собственно сама транзакция
 START TRANSACTION;
-INSERT INTO sample.users SELECT * FROM shop.users WHERE id = 1;
+INSERT INTO sample.users
+SELECT *
+FROM shop.users
+WHERE id = 1;
 COMMIT;
-SELECT * FROM sample.users;
+SELECT *
+FROM sample.users;
