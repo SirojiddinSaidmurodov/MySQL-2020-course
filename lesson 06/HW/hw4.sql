@@ -22,6 +22,15 @@ FROM (
     ) s;
 COMMIT;
 -- сам запрос:
-CREATE VIEW lastdata AS SELECT days FROM sample.info ORDER BY days DESC LIMIT 5;
-DELETE FROM sample.info WHERE days NOT IN (SELECT * FROM lastdata);
-SELECT * FROM sample.info i ;
+CREATE VIEW lastdata AS
+SELECT days
+FROM sample.info
+ORDER BY days DESC
+LIMIT 5;
+DELETE FROM sample.info
+WHERE days NOT IN (
+        SELECT *
+        FROM lastdata
+    );
+SELECT *
+FROM sample.info i;
