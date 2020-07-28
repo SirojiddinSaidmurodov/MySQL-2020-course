@@ -3,9 +3,9 @@
  из таблицы catalogs. */
 USE shop;
 CREATE OR REPLACE VIEW products_short AS
-SELECT products.name product,
-    catalogs.name catalog
-FROM products
-    JOIN catalogs ON products.catalog_id = catalogs.id;
+SELECT p.name product,
+    c.name catalog
+FROM products p
+    JOIN catalogs c ON p.catalog_id = c.id;
 SELECT *
 FROM products_short;
