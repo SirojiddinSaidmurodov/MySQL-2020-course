@@ -12,19 +12,35 @@ VALUES ('2018-08-01'),
     ('2018-08-04'),
     ('2018-08-16'),
     ('2018-08-17');
-SET @i := -1;
+DROP TABLE IF EXISTS digits;
+CREATE TEMPORARY TABLE digits (symbols INT);
+INSERT INTO digits
+VALUES (0),
+    (1),
+    (2),
+    (3),
+    (4),
+    (5),
+    (6),
+    (7),
+    (8),
+    (9);
+DROP TABLE IF EXISTS tens;
+CREATE TEMPORARY TABLE tens (symbols INT);
+INSERT INTO tens
+VALUES (0),
+    (1),
+    (2),
+    (3);
 SELECT created_at,
     created_at IN (
         SELECT *
         FROM hw3example
     ) AS d
 FROM (
-        SELECT date('2018-08-01') + INTERVAL @i := @i + 1 DAY AS created_at
-        FROM (
-                SELECT p1.id p1id,
-                    p2.id p2id
-                FROM products p1,
-                    products p2
-            ) AS pr
-        WHERE @i < 30
+        SELECT date(CONCAT('2018-08-', tens.symbols, digits.symbols)) created_at
+        FROM tens
+            JOIN digits
+        HAVING created_at BETWEEN date('2018-08-01') AND date('2018-08-01') + INTERVAL 1 MONTH - INTERVAL 1 DAY
+        ORDER BY created_at
     ) AS a;
