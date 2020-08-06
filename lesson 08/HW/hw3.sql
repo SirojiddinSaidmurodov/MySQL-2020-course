@@ -19,14 +19,15 @@ CREATE FUNCTION FIBONACCI(n INT)
 RETURNS BIGINT DETERMINISTIC
 BEGIN
 	DECLARE a, b, temp  BIGINT DEFAULT 0;
-	SET b = 1;
 	IF (n=0 OR n = 1) THEN RETURN n;
 	END IF;
 	SET n = n-1;
+	SET b = 1;
 	WHILE n > 0 DO
 		SET temp = a + b;
 		SET a = b;
 		SET b = temp;
+		SET n = n - 1;
 	END WHILE;
 	RETURN temp;
 END//
