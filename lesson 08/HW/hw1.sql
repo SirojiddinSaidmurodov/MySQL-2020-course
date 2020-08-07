@@ -9,11 +9,11 @@ CREATE FUNCTION hello() RETURNS char(255) DETERMINISTIC
 BEGIN
     DECLARE currenttime time;
     SELECT CURTIME() INTO currenttime;
-    IF (currenttime BETWEEN '6:00:00' AND '12:00:00') THEN
+    IF (currenttime BETWEEN '06:00:00' AND '12:00:00') THEN
         RETURN 'Доброе утро';
     ELSEIF (currenttime BETWEEN '12:00:00' AND '18:00:00') THEN 
         RETURN 'Добрый день';
-    ELSEIF (currenttime BETWEEN '18:00:00' AND '00:00:00') THEN
+    ELSEIF (currenttime BETWEEN '18:00:00' AND '23:59:59') THEN
         RETURN 'Добрый вечер';
     ELSE
         RETURN 'Доброй ночи';
